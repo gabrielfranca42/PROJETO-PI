@@ -3,6 +3,9 @@ package Model;
 
 import jakarta.persistence.*;
 
+
+// apenas criacao da entidade no banco de dados e nome da tabela
+
 @Entity
 @Table(name = "usuarios")
 public class UsuarioModel {
@@ -11,14 +14,21 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // apenas geracao de id e sua estretegia que no caso e autoincremente
+
 
     @Column(unique = true, nullable = false)
     private String username;
+
+    //apenas criacao de coluna no banco de dados
 
 
     @Column(nullable = false)
     private String password;
 
+    //apenas criacao de coluna no banco de dados
+
+    //aqui abaixo apenas criacao automatica de construtores vazios  e cheios mais os gets and sets
 
     public UsuarioModel() {}
 
