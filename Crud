@@ -1,0 +1,154 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Crud {
+    private String id;
+    private String nome;
+    private String valor;
+    private String descricao;
+    private String categoria;
+    private String quantidade;
+
+    public Crud(String id, String nome, String valor, String descricao, String categoria, String quantidade) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+        this.descricao = descricao;
+        this.categoria = categoria;
+        this.quantidade = quantidade;
+    }
+
+    public String getId() { return id; }
+    public String getNome() { return nome; }
+    public String getValor() { return valor; }
+    public String getDescricao() { return descricao; }
+    public String getCategoria() { return categoria; }
+    public String getQuantidade() { return quantidade; }
+
+    public void setId(String id) { this.id = id; }
+    public void setNome(String nome) { this.nome = nome; }
+    public void setValor(String valor) { this.valor = valor; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public void setQuantidade(String quantidade) { this.quantidade = quantidade; }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Nome: " + nome + ", Valor: " + valor + ", Descricao: " + descricao +
+               ", Categoria: " + categoria + ", Quantidade: " + quantidade;
+    }
+}
+
+public class Program {
+    public static void main(String[] args) {
+        List<Crud> produtos = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Adicionar Produto");
+            System.out.println("2. Listar Produtos");
+            System.out.println("3. Atualizar Produto");
+            System.out.println("4. Deletar Produto");
+            System.out.println("5. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = Integer.parseInt(scanner.nextLine());
+
+            switch (opcao) {
+                case 1:
+                    adicionarProduto(produtos, scanner);
+                    break;
+                case 2:
+                    listarProdutos(produtos);
+                    break;
+                case 3:
+                    atualizarProduto(produtos, scanner);
+                    break;
+                case 4:
+                    deletarProduto(produtos, scanner);
+                    break;
+                case 5:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+        } while (opcao != 5);
+
+        scanner.close();
+    }
+
+    static void adicionarProduto(List<Crud> produtos, Scanner scanner) {
+        System.out.print("ID: ");
+        String id = scanner.nextLine();
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("Valor: ");
+        String valor = scanner.nextLine();
+        System.out.print("Descrição: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Categoria: ");
+        String categoria = scanner.nextLine();
+        System.out.print("Quantidade: ");
+        String quantidade = scanner.nextLine();
+
+        Crud novoProduto = new Crud(id, nome, valor, descricao, categoria, quantidade);
+        produtos.add(novoProduto);
+        System.out.println("Produto adicionado com sucesso!");
+    }
+
+    static void listarProdutos(List<Crud> produtos) {
+        System.out.println("Lista de Produtos:");
+        for (Crud produto : produtos) {
+            System.out.println(produto.toString());
+        }
+    }
+
+    static void atualizarProduto(List<Crud> produtos, Scanner scanner) {
+        System.out.print("Digite o ID do produto a ser atualizado: ");
+        String id = scanner.nextLine();
+        Crud produto = null;
+        for (Crud p : produtos) {
+            if (p.getId().equals(id)) {
+                produto = p;
+                break;
+            }
+        }
+        if (produto != null) {
+            System.out.print("Novo Nome: ");
+            produto.setNome(scanner.nextLine());
+            System.out.print("Novo Valor: ");
+            produto.setValor(scanner.nextLine());
+            System.out.print("Nova Descrição: ");
+            produto.setDescricao(scanner.nextLine());
+            System.out.print("Nova Categoria: ");
+            produto.setCategoria(scanner.nextLine());
+            System.out.print("Nova Quantidade: ");
+            produto.setQuantidade(scanner.nextLine());
+            System.out.println("Produto atualizado com sucesso!");
+        } else {
+            System.out.println("Produto não encontrado!");
+        }
+    }
+
+    static void deletarProduto(List<Crud> produtos, Scanner scanner) {
+        System.out.print("Digite o ID do produto a ser deletado: ");
+        String id = scanner.nextLine();
+        Crud produto = null;
+        for (Crud p : produtos) {
+            if (p.getId().equals(id)) {
+                produto = p;
+                break;
+            }
+        }
+        if (produto != null) {
+            produtos.remove(produto);
+            System.out.println("Produto deletado com sucesso!");
+        } else {
+            System.out.println("Produto não encontrado!");
+        }
+    }
+}
