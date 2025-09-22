@@ -3,7 +3,7 @@ package Model;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "Semete")
+@Table(name = "Seemete")
 
 
 
