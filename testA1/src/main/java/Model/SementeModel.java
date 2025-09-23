@@ -51,8 +51,7 @@ public class SementeModel {
     //apenas criacao de uma coluna no banco de dados que obriga um valor minimo float
 
 
-    public SementeModel() {
-    }
+
 
 
 
