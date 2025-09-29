@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -30,11 +32,11 @@ public class ArmazemModel {
     private String Cnpj;
 
     @Column (nullable = false, length = 155)
-    private String RegistroDeEntrada;
+    private LocalDateTime  RegistroDeEntrada;
 
 
     @Column (nullable = false, length = 155)
-    private String RegistroDeSaida;
+    private LocalDateTime RegistroDeSaida;
 
 
 
