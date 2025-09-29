@@ -18,5 +18,4 @@ public class ArmazemDto {
     private String cnpj;
     private LocalDateTime registroDeEntrada;
     private LocalDateTime registroDeSaida;
-
 }

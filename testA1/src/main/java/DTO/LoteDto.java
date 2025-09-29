@@ -5,14 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 public class LoteDto {
     private Long idLote;
-    private String dataEntrada;
-    private String dataSaida;
+    private LocalDateTime dataEntrada;
+    private LocalDateTime dataSaida;
     private String localRecebimento;
     private String momentoAtual;
     private String placaVeiculo;

@@ -28,7 +28,7 @@ public class ArmazemModel {
     @Column (nullable = false, length = 4)
     private float metroCubicos;
 
-    @Column (nullable = false, length = 18)
+    @Column (nullable = false, length = 19)
     private String Cnpj;
 
     @Column (nullable = false, length = 155)
