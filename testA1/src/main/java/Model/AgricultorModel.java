@@ -27,7 +27,6 @@ public class AgricultorModel {
 
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
-
     private LocalDate dataNascimento;
 
     @Column(length = 15)
