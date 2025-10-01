@@ -1,3 +1,4 @@
+package Controller;
 
 import DTO.SementeDto;
 import Service.SementeService;
@@ -21,14 +22,14 @@ public class SementeController {
 
     private final SementeService sementeService;
 
-    // Get all Sementes
+    // Get  Sementes
     @GetMapping("/all")
     public ResponseEntity<List<SementeDto>> getAllSementes() {
         List<SementeDto> sementes = sementeService.getAll();
         return ResponseEntity.ok(sementes);
     }
 
-    // Get Semente by id
+    // Get Semente por id
     @GetMapping("/{id}")
     public ResponseEntity<SementeDto> getSementeById(@PathVariable("id") Long sementeId) {
         SementeDto sementeDto = sementeService.getById(sementeId);
@@ -39,14 +40,14 @@ public class SementeController {
         }
     }
 
-    // Create new Semente
+    // Cria nova Semente
     @PostMapping("/create")
     public ResponseEntity<SementeDto> createSemente(@ModelAttribute SementeDto sementeDto) {
         SementeDto createdSemente = sementeService.create(sementeDto);
         return new ResponseEntity<>(createdSemente, CREATED);
     }
 
-    // Update existing Semente
+    // Update  Semente
     @PostMapping("/update")
     public ResponseEntity<SementeDto> updateSemente(@ModelAttribute SementeDto sementeDto) {
         Long sementeId = sementeDto.getId();
@@ -72,6 +73,13 @@ public class SementeController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    //o trecho acima vem do meu codigo nubank adptado deve de maneira obrigatorio ser mostrado ao professor e ele aprovar caso diga que ta boom usar este modelo para todos os controller
+
+
+    //o trecho abaixo veio por uma idea de um projeto open sorce
+
 
     // Helper para obter nomes das propriedades nulas para ignorar na cópia
     public static String[] getNullPropertyNames(Object source) {
