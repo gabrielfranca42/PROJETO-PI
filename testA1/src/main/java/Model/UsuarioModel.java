@@ -2,10 +2,17 @@ package Model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 // apenas criacao da entidade no banco de dados e nome da tabela
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "usuarios")
 public class UsuarioModel {
@@ -26,43 +33,12 @@ public class UsuarioModel {
     @Column(nullable = false)
     private String password;
 
+
+}
+
     //apenas criacao de coluna no banco de dados
 
     //aqui abaixo apenas criacao automatica de construtores vazios  e cheios mais os gets and sets
 
-    public UsuarioModel() {}
-
-
-    public UsuarioModel(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-
-
-    public UsuarioModel(String username, String password, Long id){
-        this.id = id;
-        this.password = password;
-        this.username = username;
-
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-}
 
 
