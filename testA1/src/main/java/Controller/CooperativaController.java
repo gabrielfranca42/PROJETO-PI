@@ -1,7 +1,7 @@
 package Controller;
 
-import DTO.AgricultorDto;
-import Service.AgricultorService;
+import DTO.CooperativaDto;
+import Service.CooperativaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
@@ -18,23 +18,23 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("/agricultor")
 @AllArgsConstructor
-public class AgricultorController {
+public class CooperativaController {
 
-    private final AgricultorService agricultorService;
+    private final CooperativaService agricultorService;
 
     // Get all Agricultores
     @GetMapping("/all")
-    public ResponseEntity<List<AgricultorDto>> getAllAgricultores() {
-        List<AgricultorDto> agricultores = agricultorService.getAll();
+    public ResponseEntity<List<CooperativaDto>> getAllAgricultores() {
+        List<CooperativaDto> agricultores = agricultorService.getAll();
         return ResponseEntity.ok(agricultores);
     }
 
     // Get Agricultor por id
     @GetMapping("/{id}")
-    public ResponseEntity<AgricultorDto> getAgricultorById(@PathVariable("id") Long agricultorId) {
-        AgricultorDto agricultorDto = agricultorService.getById(agricultorId);
-        if (agricultorDto != null) {
-            return ResponseEntity.ok(agricultorDto);
+    public ResponseEntity<CooperativaDto> getAgricultorById(@PathVariable("id") Long agricultorId) {
+        CooperativaDto cooperativaDto = agricultorService.getById(agricultorId);
+        if (cooperativaDto != null) {
+            return ResponseEntity.ok(cooperativaDto);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -42,31 +42,31 @@ public class AgricultorController {
 
     // Cria novo Agricultor
     @PostMapping("/create")
-    public ResponseEntity<AgricultorDto> createAgricultor(@ModelAttribute AgricultorDto agricultorDto) {
-        AgricultorDto createdAgricultor = agricultorService.create(agricultorDto);
+    public ResponseEntity<CooperativaDto> createAgricultor(@ModelAttribute CooperativaDto cooperativaDto) {
+        CooperativaDto createdAgricultor = agricultorService.create(cooperativaDto);
         return new ResponseEntity<>(createdAgricultor, CREATED);
     }
 
     // Update Agricultor
     @PostMapping("/update")
-    public ResponseEntity<AgricultorDto> updateAgricultor(@ModelAttribute AgricultorDto agricultorDto) {
-        Long agricultorId = agricultorDto.getIdAgricultor();
-        AgricultorDto existingAgricultor = agricultorService.getById(agricultorId);
+    public ResponseEntity<CooperativaDto> updateAgricultor(@ModelAttribute CooperativaDto cooperativaDto) {
+        Long agricultorId = cooperativaDto.getIdCooperativa();
+        CooperativaDto existingAgricultor = agricultorService.getById(agricultorId);
         if (existingAgricultor == null) {
             return ResponseEntity.notFound().build();
         }
         // Partial update: copia propriedades não nulas do DTO para o existente
-        BeanUtils.copyProperties(agricultorDto, existingAgricultor, getNullPropertyNames(agricultorDto));
+        BeanUtils.copyProperties(cooperativaDto, existingAgricultor, getNullPropertyNames(cooperativaDto));
 
-        AgricultorDto updatedAgricultor = agricultorService.update(agricultorId, existingAgricultor);
+        CooperativaDto updatedAgricultor = agricultorService.update(agricultorId, existingAgricultor);
         return ResponseEntity.ok(updatedAgricultor);
     }
 
     // Delete Agricultor by id
     @PostMapping("/delete/{id}")
     public ResponseEntity<String> deleteAgricultor(@PathVariable("id") Long agricultorId) {
-        AgricultorDto agricultorDto = agricultorService.getById(agricultorId);
-        if (agricultorDto != null) {
+        CooperativaDto cooperativaDto = agricultorService.getById(agricultorId);
+        if (cooperativaDto != null) {
             agricultorService.delete(agricultorId);
             return ResponseEntity.ok("Agricultor deletado com sucesso!");
         } else {
