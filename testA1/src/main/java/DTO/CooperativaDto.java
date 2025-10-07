@@ -12,18 +12,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Setter
 @Getter
-public class AgricultorDto {
-    private Long idAgricultor;
-    private String nome;
-    private String cpf;
-    private LocalDate dataNascimento;
+public class CooperativaDto {
+    private Long idCooperativa;
+    private String razaoSocial;
+    private String cnpj;
     private String telefone;
     private String email;
-    private String endereco;
+    private String enderecoCompleto;
     private String municipio;
     private String estado;
-    private Double areaPropriedade;
-    private String tipoSemente;
+    private String tipoAtuacao;
+    private Boolean ativo;
     private LocalDateTime dataCadastro;
-
+    private String observacoes;
 }
