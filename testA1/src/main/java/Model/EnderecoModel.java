@@ -53,10 +53,10 @@ public class EnderecoModel {
 
 
     @OneToMany(mappedBy = "endereco", fetch = FetchType.LAZY)
-    private List<CooperativaModel> cooperativasModels;
+    private List<CooperativaModel> cooperativasModelList;
 
 
     @OneToMany(mappedBy = "endereco", fetch = FetchType.LAZY)
-    private List<ArmazemModel> armazemModels;
+    private List<ArmazemModel> armazemModelList;
 
 }

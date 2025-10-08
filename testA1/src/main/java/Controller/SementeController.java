@@ -18,7 +18,8 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("/semente")
 @AllArgsConstructor
-public class SementeController {
+public class
+SementeController {
 
     private final SementeService sementeService;
 
