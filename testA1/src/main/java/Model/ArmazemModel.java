@@ -2,17 +2,17 @@ package Model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 @Table (name = "Armazen")
 public class ArmazemModel {
@@ -20,24 +20,23 @@ public class ArmazemModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long idArmazen;
+    private Long id;
 
-    @Column (nullable = false, length = 180)
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
-    @Column (nullable = false, length = 4)
-    private float metroCubicos;
+    @Column(name = "cnpj", nullable = false, length = 19, unique = true)
+    private String cnpj;
 
-    @Column (nullable = false, length = 19)
-    private String Cnpj;
+    @Column(name = "capacidade", nullable = false, precision = 10, scale = 2)
+    private BigDecimal capacidade;
 
-    @Column (nullable = false, length = 155)
-    private LocalDateTime  RegistroDeEntrada;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "endereco_id", nullable = false)
+    private EnderecoModel enderecoModel;
 
-
-    @Column (nullable = false, length = 155)
-    private LocalDateTime RegistroDeSaida;
-
+    @OneToMany(mappedBy = "armazem", fetch = FetchType.LAZY)
+    private List<EstoqueModel> estoqueModelList;
 
 
 
