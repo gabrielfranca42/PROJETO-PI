@@ -4,6 +4,8 @@ package Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -25,6 +27,11 @@ public class MunicipioModel {
 
     @Column  (nullable = false, length = 18,unique = true)
     private  int Cnpj;
+
+
+    @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY)
+    private List<EnderecoModel> enderecoModel;
+
 
 
 

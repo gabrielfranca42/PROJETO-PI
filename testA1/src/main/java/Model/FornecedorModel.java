@@ -3,6 +3,8 @@ package Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -13,30 +15,46 @@ import lombok.*;
 public class FornecedorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(nullable = false ,name = "cnpj", length = 19)
-    private String cnpj;
+    private Long id;
 
 
-    @Column( nullable = false ,name = "razaosocial", length = 155)
-    private String razaoSocial;
+    @Column(name = "rua", length = 155)
+    private String rua;
 
 
-    @Column( nullable = false ,name = "email", length = 155)
-    private String email;
+    @Column(name = "numero", length = 10)
+    private String numero;
 
 
-    @Column(  nullable = false,name = "endereco", length = 100)
-    private String endereco;
+    @Column(name = "complemento", length = 155)
+    private String complemento;
 
 
-    @Column( nullable = false,name = "estado", length = 2)
+    @Column(name = "bairro", length = 155)
+    private String bairro;
+
+
+    @Column(name = "cidade", length = 155)
+    private String cidade;
+
+
+    @Column(name = "estado", length = 2)
     private String estado;
 
 
-    @Column(nullable = false,name = "telefone", length = 13)
-    private String telefone;
+    @Column(name = "cep", length = 10)
+    private String cep;
 
+
+    @Column(name = "ponto_referencia", length = 155)
+    private String pontoReferencia;
+
+//DEVE SER REVISAOD ESTA PARTE DE FORNECIMENTO E POSSIVELMENTE APAGADO
+
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
+    private List<FornecimentoModel> fornecimentoModels;
+
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
+    private List<LoteControleModel> loteControleModels;
 
 }
