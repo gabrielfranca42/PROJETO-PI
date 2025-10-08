@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,44 +22,32 @@ public class LoteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLote;
+    private Long id;
 
-    @Column(nullable = false, length = 10)
-    private String dataEntrada;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "semente_id", nullable = false)
+    private SementeModel sementeModel;
 
-    @Column (nullable = false, length = 10)
-    private String dataSaida;
+    @Column(name = "data_entrada")
+    private LocalDateTime dataEntrada;
 
-    @Column (nullable = false, length = 155)
-    private String localRecebimento;
+    @Column(name = "data_saida")
+    private LocalDateTime dataSaida;
 
-    @Column (nullable = false, length = 155)
-    private String momentoAtual;
+    @Column(name = "peso", nullable = false, precision = 8, scale = 2)
+    private BigDecimal peso;
 
+    @Column(name = "metro_cubico", nullable = false, precision = 8, scale = 2)
+    private BigDecimal metroCubico;
 
-    @Column (nullable = false, length = 7, unique = true)
-    private String PlacaVeiculo;
+    @Column(name = "identificacao", nullable = false, length = 45, unique = true)
+    private String identificacao;
 
+    @OneToMany(mappedBy = "lote", fetch = FetchType.LAZY)
+    private List<LoteControleModel> loteControleModelList;
 
-    @Column (nullable = false, length = 7, unique = true)
-    private int Identificacao;
-
-    @Column (nullable = false, length = 6)
-    private int Kg;
-
-    @Column (nullable = false, length = 6)
-    private float MetrosCubicos;
-
-    @Column (nullable = false, length = 155)
-    private boolean entreguemEmBomEstado;
-
-
-    @Column (nullable = false, length = 155)
-    private boolean entregueEmMalEstado;
-
-    @Column (nullable = false, length = 155)
-    private boolean naoEntregue;
-
+    @OneToMany(mappedBy = "lote", fetch = FetchType.LAZY)
+    private List<EstoqueControleModel> estoqueControleModelList;
 
 
 
