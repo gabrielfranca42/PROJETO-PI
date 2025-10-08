@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MunicipioDto {
-    private Long idMunicipio;
+    private long id;
     private String nome;
     private String estado;
     private int cnpj;
