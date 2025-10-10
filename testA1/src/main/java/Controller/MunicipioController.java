@@ -50,7 +50,7 @@ public class MunicipioController {
     // Update  Municipio
     @PostMapping("/update")
     public ResponseEntity<MunicipioDto> updateMunicipio(@ModelAttribute MunicipioDto municipioDto) {
-        Long municipioId = municipioDto.getId();
+        Long municipioId = Long.valueOf(municipioDto.getId());
         MunicipioDto existingMunicipio = municipioService.getById(municipioId);
         if (existingMunicipio == null) {
             return ResponseEntity.notFound().build();
