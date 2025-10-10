@@ -50,7 +50,7 @@ public class ArmazemController {
     // Update  Armazem
     @PostMapping("/update")
     public ResponseEntity<ArmazemDto> updateArmazem(@ModelAttribute ArmazemDto armazemDto) {
-        Long armazemId = armazemDto.getIdArmazen();
+        Long armazemId = armazemDto.getId();
         ArmazemDto existingArmazem = armazemService.getById(armazemId);
         if (existingArmazem == null) {
             return ResponseEntity.notFound().build();
