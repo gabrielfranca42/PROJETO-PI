@@ -2,7 +2,9 @@ package DTO;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,16 +12,14 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 public class LoteDto {
-    private Long idLote;
+
+    private Long id;
+    private Long sementeId;
     private LocalDateTime dataEntrada;
     private LocalDateTime dataSaida;
-    private String localRecebimento;
-    private String momentoAtual;
-    private String placaVeiculo;
-    private int identificacao;
-    private int kg;
-    private float metrosCubicos;
-    private boolean entreguemEmBomEstado;
-    private boolean entregueEmMalEstado;
-    private boolean naoEntregue;
+    private BigDecimal peso;
+    private BigDecimal metroCubico;
+    private String identificacao;
+    private List<Long> loteControleIds;
+    private List<Long> estoqueControleIds;
 }
