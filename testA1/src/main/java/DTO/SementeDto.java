@@ -3,14 +3,24 @@ package DTO;
 
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Builder
 public class SementeDto {
-    private long id;
-    private String nomeSemente;
+
+
+    private Long id;
+    private String nome;
+    private Integer validade;
+    private String especie;
+    private Long fornecimentoId;
+    private List<Long> estoqueIds;
+    private List<Long> loteIds;
+    private List<Long> loteControleIds;
 
 
 }

@@ -2,15 +2,18 @@ package DTO;
 
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
 public class MunicipioDto {
-    private long id;
+    private Integer id;
     private String nome;
     private String estado;
-    private int cnpj;
+    private Integer cnpj;
+    private List<Long> enderecoIds;
 
 }

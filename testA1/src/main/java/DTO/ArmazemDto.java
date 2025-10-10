@@ -2,6 +2,7 @@ package DTO;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -10,10 +11,9 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class ArmazemDto {
-    private Long idArmazen;
+    private Long id;
     private String nome;
-    private float metroCubicos;
     private String cnpj;
-    private LocalDateTime registroDeEntrada;
-    private LocalDateTime registroDeSaida;
+    private BigDecimal capacidade;
+    private Long enderecoId;
 }

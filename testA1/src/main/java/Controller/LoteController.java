@@ -50,7 +50,7 @@ public class LoteController {
     // Update  Lote
     @PostMapping("/update")
     public ResponseEntity<LoteDto> updateLote(@ModelAttribute LoteDto loteDto) {
-        Long loteId = loteDto.getIdLote();
+        Long loteId = loteDto.getId();
         LoteDto existingLote = loteService.getById(loteId);
         if (existingLote == null) {
             return ResponseEntity.notFound().build();
