@@ -52,7 +52,7 @@ public class EnderecoController {
     // Update Endereço
     @PostMapping("/update")
     public ResponseEntity<EnderecoDto> updateEndereco(@ModelAttribute EnderecoDto enderecoDto) {
-        Long enderecoId = enderecoDto.getIdEndereco();
+        Long enderecoId = enderecoDto.getId();
         EnderecoDto existingEndereco = enderecoService.getById(enderecoId);
         if (existingEndereco == null) {
             return ResponseEntity.notFound().build();
