@@ -29,7 +29,7 @@ public class MunicipioModel {
     private int Cnpj;
 
     // ALTERAÇÃO: mappedBy estava correto, nenhuma alteração aqui
-    @OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "municipioModel", fetch = FetchType.LAZY)
     private List<EnderecoModel> enderecoModel;
 }
 

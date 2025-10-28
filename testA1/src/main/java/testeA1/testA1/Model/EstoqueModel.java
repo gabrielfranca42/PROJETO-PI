@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,5 +33,8 @@ public class EstoqueModel {
     @JoinColumn(name = "semente_id", nullable = false)
     private SementeModel semente;
     // ALTERAÇÃO: relaciona corretamente a semente armazenada
+
+    @OneToMany(mappedBy = "estoqueModel", fetch = FetchType.LAZY)
+    private List<EstoqueControleModel> estoqueControleModelList;
 }
 

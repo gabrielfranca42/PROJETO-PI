@@ -21,6 +21,6 @@ public class FornecimentoModel {
     @JoinColumn(name = "fornecedor_id", nullable = false)
     private FornecedorModel fornecedor;
 
-    @OneToMany(mappedBy = "fornecimento", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fornecimentoModel", fetch = FetchType.LAZY)
     private List<SementeModel> sementes;
 }

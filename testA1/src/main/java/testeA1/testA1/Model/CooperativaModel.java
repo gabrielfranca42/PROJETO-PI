@@ -54,6 +54,6 @@ public class CooperativaModel {
     @JoinColumn(name = "endereco_id") // cria a FK no banco
     private EnderecoModel enderecoModel;
 
+    @OneToMany(mappedBy = "cooperativaModel", fetch = FetchType.LAZY)
     private List<EstoqueControleModel> estoqueControleModels = new ArrayList<>();
-
 }

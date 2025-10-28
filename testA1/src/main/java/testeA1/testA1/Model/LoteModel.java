@@ -43,10 +43,10 @@ public class LoteModel {
     @Column(name = "identificacao", nullable = false, length = 45, unique = true)
     private String identificacao;
 
-    @OneToMany(mappedBy = "lote", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "loteModel", fetch = FetchType.LAZY)
     private List<LoteControleModel> loteControleModelList;
 
-    @OneToMany(mappedBy = "lote", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "loteModel", fetch = FetchType.LAZY)
     private List<EstoqueControleModel> estoqueControleModelList;
 
 

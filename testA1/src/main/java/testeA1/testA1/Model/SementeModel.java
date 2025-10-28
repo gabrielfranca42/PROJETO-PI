@@ -43,11 +43,11 @@ public class SementeModel {
     private List<EstoqueModel> estoqueModelList;
 
 
-    @OneToMany(mappedBy = "semente", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sementeModel", fetch = FetchType.LAZY)
     private List<LoteModel> loteModelList;
 
 
-    @OneToMany(mappedBy = "semente", fetch = FetchType.LAZY)
+        @OneToMany(mappedBy = "sementeModel", fetch = FetchType.LAZY)
     private List<LoteControleModel> loteControleModelList;
 
 
