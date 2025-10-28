@@ -42,14 +42,14 @@ public class ArmazemController {
 
     // Cria nova Armazem
     @PostMapping("/create")
-    public ResponseEntity<ArmazemDto> createArmazem(@ModelAttribute ArmazemDto armazemDto) {
+    public ResponseEntity<ArmazemDto> createArmazem(@RequestBody ArmazemDto armazemDto) { //deve ser analisado se e pra usar request body pra tudo pois @ModelAttribute e mais pra imagem e nao dados via json por enquanto esta tudo @ModelAttribute
         ArmazemDto createdArmazem = armazemService.create(armazemDto);
         return new ResponseEntity<>(createdArmazem, CREATED);
     }
 
     // Update  Armazem
     @PostMapping("/update")
-    public ResponseEntity<ArmazemDto> updateArmazem(@ModelAttribute ArmazemDto armazemDto) {
+    public ResponseEntity<ArmazemDto> updateArmazem(@RequestBody ArmazemDto armazemDto) {
         Long armazemId = armazemDto.getId();
         ArmazemDto existingArmazem = armazemService.getById(armazemId);
         if (existingArmazem == null) {
